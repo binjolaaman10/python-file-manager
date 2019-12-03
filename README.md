@@ -10,7 +10,9 @@ Python 3.7 or above is recommended for using this program.
 You need to install a few libraries too. You can do these by using the following commands:
 
 > pip install send2trash
+
 > pip install os
+
 > pip install shutil
 
 **send2trash** is a python module that sends files/folders to Recycle Bin instead of permanently deleting it.
