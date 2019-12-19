@@ -1,16 +1,16 @@
 '''
 This is a python based file manager system
-for microsoft windows made by Aman Binjola
+for Microsoft Windows made by Aman Binjola
 as a personal project.
 28-November-2019
 '''
 
-# ! python3
+#! python3
 
 import sys
 import os
 import shutil
-# import send2trash
+import send2trash
 
 print('Welcome to Zolo File Manager\n')
 
@@ -72,35 +72,153 @@ while True:
 
             if res in os.listdir(os.getcwd()):
                 if os.path.isfile(res):
-                    os.system(res)
+                    os.system('"' + res + '"')
                 else:
                     os.chdir(res)
-                    for x in os.listdir(os.getcwd()):
-                        print(x)
 
-            elif res == 'exitManager':                                             # Exit command to exit from loop
+            elif res == 'exitManager':                          # Exit command to exit from loop
                 sys.exit(1)
 
-            elif res == 'backManager':                                             # Back command to go up one directory
+            elif res == 'backManager':                          # Back command to go up one directory
                 os.chdir('..')
 
             else:
-                print('No file exist of this name.')
+                print('No file/folder exist of this name.')
+
+    if result == '2':
+        print("You chose to rename")
+
+    if result == '3':
+        print("You chose to move")
+
+    if result == '4':
+        print("You chose to copy")
+
 
     if result == '5':
         while True:
 
             # Options to delete files/folders to permanently or otherwise
-            print('\n\n1. Permanently \n2. Recycle Bin')
+            print('\n1. Permanently \n2. Recycle Bin')
             query = input('Would you like to permanently delete or send to Recycle Bin?: ')
 
             if query == '1':
-                print('You chose to permanently delete files/folders.')
-                # code
+                print('You chose to permanently delete files/folders.\n')
+                print('Drives: ')
+                for x in range(len(drives)):
+                    print(str(1 + x) + '. ' + drives[x])
+
+                while True:
+                    inp = input("\nEnter your Choice: ")
+
+                    if inp in drives:
+                        os.chdir(inp + '\\')
+                        break
+                    else:
+                        print('Error\nEnter a correct drive name.\n')
+
+                while True:
+
+                    listdir = os.listdir(os.getcwd())
+                    for x in os.listdir(os.getcwd()):
+                        print(x)
+
+                    print('\n\nType "exitManager" to exit from file manager.')
+                    print('Type "backManager" to go up one directory.')
+                    print('Type "deleteManager" to permanently delete this directory')
+
+                    res = input('\nChoose a file to delete: ')
+                    print('\n')
+
+                    if res in os.listdir(os.getcwd()):
+                        if os.path.isfile(res):
+
+                            # Warning to prevent unnecessary deletion
+                            print('Are you sure you want to permanently delete this file? (YES/NO)')
+                            ans = input('Yes or No: ')
+                            if ans.lower() == 'yes' or 'y':
+                                os.unlink(res)
+                        else:
+                            os.chdir(res)
+
+                    elif res == 'exitManager':                      # Exit command to exit from loop
+                        sys.exit(1)
+
+                    elif res == 'backManager':                      # Back command to go up one directory
+                        os.chdir('..')
+
+                    elif res == 'deleteManager':                    # Delete command to delete one directory
+
+                        # Warning to prevent unnecessary deletion
+                        print('Are you sure you want to permanently delete this folder? (YES/NO)')
+                        ans = input('Yes or No: ')
+
+                        if ans.lower() == 'yes' or 'y':
+                            path = os.getcwd()
+                            os.chdir('..')
+                            shutil.rmtree(path)
+
+                    else:
+                        print('No file/folder exist of this name.')
 
             elif query == '2':
                 print('You chose to temporarily delete files/folders.')
-                # code
+                print('Drives: ')
+                for x in range(len(drives)):
+                    print(str(1 + x) + '. ' + drives[x])
 
-            else:
-                print('You chose wrong number')
+                while True:
+                    inp = input("\nEnter your Choice: ")
+
+                    if inp in drives:
+                        os.chdir(inp + '\\')
+                        break
+                    else:
+                        print('Error\nEnter a correct drive name.\n')
+
+                while True:
+
+                    listdir = os.listdir(os.getcwd())
+                    for x in os.listdir(os.getcwd()):
+                        print(x)
+
+                    print('\n\nType "exitManager" to exit from file manager.')
+                    print('Type "backManager" to go up one directory.')
+                    print('Type "deleteManager" to permanently delete this directory')
+
+                    res = input('\nChoose a file to delete: ')
+                    print('\n')
+
+                    if res in os.listdir(os.getcwd()):
+                        if os.path.isfile(res):
+
+                            # Warning to prevent unnecessary deletion
+                            print('Are you sure you want to permanently delete this file? (YES/NO)')
+                            ans = input('Yes or No: ')
+                            if ans.lower() == 'yes' or 'y':
+                                send2trash.send2trash(res)
+                        else:
+                            os.chdir(res)
+
+                    elif res == 'exitManager':  # Exit command to exit from loop
+                        sys.exit(1)
+
+                    elif res == 'backManager':  # Back command to go up one directory
+                        os.chdir('..')
+
+                    elif res == 'deleteManager':  # Delete command to delete one directory
+
+                        # Warning to prevent unnecessary deletion
+                        print('Are you sure you want to permanently delete this folder? (YES/NO)')
+                        ans = input('Yes or No: ')
+
+                        if ans.lower() == 'yes' or 'y':
+                            path = os.getcwd()
+                            os.chdir('..')
+                            send2trash.send2trash(path)
+
+                    else:
+                        print('No file/folder exist of this name.')
+
+        else:
+            print('You chose wrong number')
