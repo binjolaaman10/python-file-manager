@@ -7,17 +7,11 @@ Hi! **Zolo File Manager** is a file manager (for windows) based on *Python 3.7*.
 
 ## Usage
 Python 3.7 or above is recommended for using this program.
-You need to install a few libraries too. You can do these by using the following commands:
+You need to install *send2trash* library first. You can do this by using the following command:
 
 > pip install send2trash
 
-> pip install os
-
-> pip install shutil
-
 **send2trash** is a python module that sends files/folders to Recycle Bin instead of permanently deleting it.
-**os** is a python module that is used to perform various functions on files and folders.
-**shutil** is yet another python module to perform various functions on files and folders 
 
 ## Functions you can perform on files/folders
 
