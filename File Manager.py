@@ -3,6 +3,8 @@ This is a python based file manager system
 for Microsoft Windows made by Aman Binjola
 as a personal project.
 28-November-2019
+
+https://github.com/binjolaaman10/ZoloFileManager
 '''
 
 #! python3
@@ -16,6 +18,11 @@ print('Welcome to Zolo File Manager\n')
 
 # Stores every drive connected on PC in a list.
 drives = [chr(x) + ':' for x in range(65, 90) if os.path.exists(chr(x) + ':')]
+
+def listDirectories():
+    listdir = os.listdir(os.getcwd())
+    for x in listdir:
+        print(x)
 
 while True:
     print("1.Open files/folders \n2.Rename \n3.Move and Paste \n4.Copy and Paste \n5.Delete\n")
@@ -61,9 +68,7 @@ while True:
 
         while True:
 
-            listdir = os.listdir(os.getcwd())
-            for x in os.listdir(os.getcwd()):
-                print(x)
+            listDirectories()
 
             print('\n\nType "exitManager" to exit from file manager.')
             print('Type "backManager" to go up one directory.')
@@ -77,7 +82,7 @@ while True:
                     os.chdir(res)
 
             elif res == 'exitManager':                          # Exit command to exit from loop
-                sys.exit(1)
+                sys.exit(0)
 
             elif res == 'backManager':                          # Back command to go up one directory
                 os.chdir('..')
@@ -87,6 +92,56 @@ while True:
 
     if result == '2':
         print("You chose to rename")
+        print('Drives: ')
+        for x in range(len(drives)):
+            print(str(1 + x) + '. ' + drives[x])
+
+        while True:
+            inp = input("\nEnter your Choice: ")
+
+            if inp in drives:
+                os.chdir(inp + '\\')
+                break
+            else:
+                print('Error\nEnter a correct drive name.\n')
+
+        while True:
+
+            listDirectories()
+
+            print('\n\nType "exitManager" to exit from file manager.')
+            print('Type "backManager" to go up one directory.')
+            print('Type "renameManager" to rename this directory')
+
+            res = input('\nChoose a file to rename: ')
+            print('\n')
+
+            if res in os.listdir(os.getcwd()):
+                if os.path.isfile(res):
+
+                    new_name = input("Enter a new name: ")
+                    ogDir = res
+                    newDir = os.getcwd() + '\\' + new_name
+                    shutil.move(ogDir, newDir)
+                else:
+                    os.chdir(res)
+
+            elif res == 'exitManager':    # Exit command to exit from loop
+                sys.exit(0)
+
+            elif res == 'backManager':    # Back command to go up one directory
+                os.chdir('..')
+
+            elif res == 'renameManager':  # Rename command to delete one directory
+
+                new_name = input("Enter a new name: ")
+                ogDir = os.getcwd()
+                os.chdir('..')
+                newDir = os.getcwd() + '\\' + new_name
+                shutil.move(ogDir, newDir)
+
+            else:
+                print('No file/folder exist of this name.')
 
     if result == '3':
         print("You chose to move")
@@ -119,9 +174,7 @@ while True:
 
                 while True:
 
-                    listdir = os.listdir(os.getcwd())
-                    for x in os.listdir(os.getcwd()):
-                        print(x)
+                    listDirectories()
 
                     print('\n\nType "exitManager" to exit from file manager.')
                     print('Type "backManager" to go up one directory.')
@@ -142,7 +195,7 @@ while True:
                             os.chdir(res)
 
                     elif res == 'exitManager':                      # Exit command to exit from loop
-                        sys.exit(1)
+                        sys.exit(0)
 
                     elif res == 'backManager':                      # Back command to go up one directory
                         os.chdir('..')
@@ -178,13 +231,11 @@ while True:
 
                 while True:
 
-                    listdir = os.listdir(os.getcwd())
-                    for x in os.listdir(os.getcwd()):
-                        print(x)
+                    listDirectories()
 
                     print('\n\nType "exitManager" to exit from file manager.')
                     print('Type "backManager" to go up one directory.')
-                    print('Type "deleteManager" to permanently delete this directory')
+                    print('Type "deleteManager" to send this directory to recycle bin')
 
                     res = input('\nChoose a file to delete: ')
                     print('\n')
@@ -193,7 +244,7 @@ while True:
                         if os.path.isfile(res):
 
                             # Warning to prevent unnecessary deletion
-                            print('Are you sure you want to permanently delete this file? (YES/NO)')
+                            print('Are you sure you want to send this folder to recycle bin? (YES/NO)')
                             ans = input('Yes or No: ')
                             if ans.lower() == 'yes' or 'y':
                                 send2trash.send2trash(res)
@@ -201,7 +252,7 @@ while True:
                             os.chdir(res)
 
                     elif res == 'exitManager':  # Exit command to exit from loop
-                        sys.exit(1)
+                        sys.exit(0)
 
                     elif res == 'backManager':  # Back command to go up one directory
                         os.chdir('..')
@@ -209,7 +260,7 @@ while True:
                     elif res == 'deleteManager':  # Delete command to delete one directory
 
                         # Warning to prevent unnecessary deletion
-                        print('Are you sure you want to permanently delete this folder? (YES/NO)')
+                        print('Are you sure you want to send this folder to recycle bin? (YES/NO)')
                         ans = input('Yes or No: ')
 
                         if ans.lower() == 'yes' or 'y':
