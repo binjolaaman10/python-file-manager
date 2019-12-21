@@ -3,8 +3,6 @@
 
 Hi! **Zolo File Manager** is a file manager (for windows) based on *Python 3.7*. It was made by [Aman Binjola](www.github.com/binjolaaman10) as a personal project. With this python based file explorer you can view files, folders and perform actions on them. Actions such as moving them, deleting them (permanently or sending them to recycle bin).
 
-*This project is a work in progress.*
-
 ## Usage
 Python 3.7 or above is recommended for using this program.
 You need to install *send2trash* library first. You can do this by using the following command:
