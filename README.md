@@ -1,6 +1,10 @@
 # Zolo File Manager 
 **Version 1.0**
 
+[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
+
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
+
 Hi! **Zolo File Manager** is a file manager (for windows) based on *Python 3.7*. It was made by [Aman Binjola](www.github.com/binjolaaman10) as a personal project. With this python based file explorer you can view files, folders and perform actions on them. Actions such as moving them, deleting them (permanently or sending them to recycle bin).
 
 ## Usage
