@@ -1,15 +1,20 @@
-# Zolo File Manager 
-**Version 1.0**
+# python-file-manager
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
-Hi! **Zolo File Manager** is a file manager (for windows) based on *Python 3.7*. It was made by [Aman Binjola](www.github.com/binjolaaman10) as a personal project. With this python based file explorer you can view files, folders and perform actions on them. Actions such as moving them, deleting them (permanently or sending them to recycle bin).
+Hi! **python-file-manager** is a file manager (for windows) based on *Python 3.7*. It was made by [Aman Binjola](www.github.com/binjolaaman10) as a personal project. With this python based file explorer you can view files, folders and perform actions on them. Actions such as moving them, deleting them (permanently or sending them to recycle bin).
 
-## Usage
+## Modules Used:
+
+1. send2trash
+2. os
+3. shutil
+4. sys
+
 Python 3.7 or above is recommended for using this program.
-You need to install *send2trash* library first. You can do this by using the following command:
+You need to install *send2trash* module first. You can do this by using the following command:
 
 > pip install send2trash
 
@@ -24,7 +29,3 @@ You need to install *send2trash* library first. You can do this by using the fol
  5. Move files/folders to another location
  6. Copy files/folders to another location
  
- ## Features that may be added in the future
- 
- 1. A GUI made using Tkinter
- 2. Ability to add your favorite folders in Quick Access 
