@@ -4,7 +4,7 @@ for Microsoft Windows made by Aman Binjola
 as a personal project.
 28-November-2019
 
-https://github.com/binjolaaman10/ZoloFileManager
+https://github.com/binjolaaman10/python-file-manager
 '''
 
 #! python3
@@ -14,7 +14,7 @@ import os
 import shutil
 import send2trash
 
-print('Welcome to Zolo File Manager\n')
+print('Welcome to the python-file-manager\n')
 
 # Stores every drive connected on PC in a list.
 drives = [chr(x) + ':' for x in range(65, 90) if os.path.exists(chr(x) + ':')]
